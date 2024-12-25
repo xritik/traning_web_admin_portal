@@ -1,3 +1,5 @@
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');    /* Imported box-icon  */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,8 +12,238 @@ body {
   top: 0;
   left: 0;
 }
-.LoginPage{
+.loginPage{
   height: 100vh;
+  background-image: url(./img/login.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  padding-left: 7%;
+}
+.loginSection{
+  height: 370px;
+  width: 350px;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 10px 10px 15px .5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.loginHeading{
+  padding: 15px 0px;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+}
+form {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  gap: 25px;
+}
+input {
+  width: 90%;
+  margin-top: 3px;
+  padding: 10px 0px 10px 5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: black;
+}
+.showPassword {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  padding: 3px 0px 0px 20px;
+}
+.buttonDiv{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.loginButton {
+  padding: 10px;
+  width: 50%;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+.loginButton:hover {
+  background-color: #218838;
+}
+
+.dashboardSection{
+  height: auto;
+  width: 100vw;
+}
+.dashboardPage{
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./img/dashboardImage.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: fixed;
+}
+nav{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  padding-top: 10px;
+}
+.nav{
+  display: flex;
+  /* border: 1px solid red; */
+  border-radius: 35px;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 3px 4px 10px 1px rgb(150, 208, 232);
+}
+.nav1{
+  width: 25%;
+  display: flex;
+}
+.brandName{
+  font-size: 35px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+.nav2{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7px;
+  gap: 25px;
+}
+.link{
+  text-decoration: none;
+  color: rgb(40, 40, 40);
+  transition: .2s;
+}
+.link:hover{
+  color: rgb(80, 80, 80);
+  text-decoration: underline;
+}
+.link:active{
+  scale: .9;
+}
+.nav3{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  button{
+    padding: 9px 17px 9px 17px;
+    background-color: red;
+    border: 1px solid black;
+    border-radius: 7px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: .3s;
+  }:hover{
+    background-color: rgb(255, 90, 90);
+  }:active{
+    background-color: rgb(177, 0, 0);
+    scale: .8;
+  }
+}
+.dashboard{
+  width: 40%;
+  margin-top: 100px;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.part1{
+  color: white;
+  font-weight: bold;
+  font-size: 55px;
+}
+.part2{
+  color: rgb(121, 192, 255);
+  font-weight: bold;
+  font-size: 70px;
+  text-shadow: 1px 1px 5px white;
+}
+
+.add_new_user_section{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.add_user_part1{
+  width: 50%;
+  background-color: rgb(47, 151, 192);
+}
+.add_user_part2{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightblue;
+  img{
+    width: 90%;
+    /* border: 1px solid red; */
+    border-top-left-radius: 50%;
+    box-shadow: -7px -7px 6px 1px white;
+  }
+}
+
+.back{
+  font-size: 25px;
+}
+.bx-arrow-back{
+  transition: .3s;
+  cursor: pointer;
+  color: black;
+  padding: 5px;
+}
+.bx-arrow-back:hover{
+  color: white;
+  background-color: black;
+}
+.bx-arrow-back:active{
+  scale: .9;
+}
+.addUserPage{
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.addUserSection{
+  height: 80%;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 10px 10px 15px .5px;
+  background-color: rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.addUserButton{
+  display: flex;
+  justify-content: center;
+  button{
+    padding: 10px 35px 10px 35px;
+    border-radius: 7px;
+    font-size: 17px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: .4s;
+  }:active{
+    scale: .9;
+  }
 }

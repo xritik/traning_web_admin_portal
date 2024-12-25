@@ -2,10 +2,12 @@ import {useState, useEffect} from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import AddNewUser from './AddNewUser';
+import AllUsers from './AllUsers';
 
 function App() {
   const navigate = useNavigate();
-  const [loggedinAdmin, setLoggedinName] = useState(localStorage.getItem('loggedinAdmin') || '');
+  const [loggedinAdmin, setLoggedinAdmin] = useState(localStorage.getItem('loggedinAdmin') || '');
   const [message, setMessage] = useState('');
   console.log('loggedinAdmin:- ',loggedinAdmin);
 
@@ -26,9 +28,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login setLoggedinName={setLoggedinName} navigate={navigate} message={message} setMessage={setMessage} />} />
-        <Route path="/login" element={<Login setLoggedinName={setLoggedinName} navigate={navigate} message={message} setMessage={setMessage} />} />
+        <Route path="/" element={<Login setLoggedinAdmin={setLoggedinAdmin} navigate={navigate} message={message} setMessage={setMessage} />} />
+        <Route path="/login" element={<Login setLoggedinAdmin={setLoggedinAdmin} navigate={navigate} message={message} setMessage={setMessage} />} />
         <Route path="/dashboard" element={<Dashboard logout={logout} navigate={navigate} message={message} setMessage={setMessage} />} />
+        <Route path="/add_new_user" element={<AddNewUser logout={logout} navigate={navigate} />} />
+        <Route path="/all_users" element={<AllUsers logout={logout} navigate={navigate} />} />
       </Routes>
     </div>
   );
