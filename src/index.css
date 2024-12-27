@@ -247,3 +247,43 @@ nav{
     scale: .9;
   }
 }
+
+.allUsersSection{
+  min-height: 100vh;
+  width: 100vw;
+  background-color: rgb(123, 173, 255);
+  position: fixed;
+}
+.usersSection{
+  margin-top: 100px;
+}
+.allUsersHeading{
+  text-align: center;
+}
+.dataTable{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: scroll;
+  scrollbar-width: none;
+}
+.dataTable table{
+  /* width: 90%; */
+  border: 1px solid black;
+  border-collapse: collapse;
+  border-radius: 7px;
+  /* overflow: hidden; */
+}
+.dataTable th, .dataTable td {
+  text-align: center;
+  padding: 12px 30px 12px 30px;
+  border: 1px solid #ddd;
+}
+.dataTable th {
+  background-color: #f4f4f4;
+  color: #333;
+  font-weight: bold;
+}
+.dataTable td{
+  cursor: pointer;
+}
