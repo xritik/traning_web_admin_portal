@@ -38,4 +38,31 @@ router.get('/', async(req, res) => {
     }
 })
 
+router.put('/', async(req, res) => {
+    const {editingUserId, editingUserName, editingUserPassword, editingUserRole} = req.body;
+    const id = editingUserId
+
+    const userData = {
+        name: editingUserName,
+        password: editingUserPassword,
+        role: editingUserRole,
+    };
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(id, userData, {
+            new: true,
+            runValidators: true, 
+        });
+
+        if (updatedUser) {
+            res.status(200).json({ message: 'User updated successfully!!' });
+        } else {
+            res.status(404).json({ message: 'User not found!!' });
+        }
+    } catch (error) {
+        console.error("Error updating user details:", error);
+        res.status(500).json({ message: 'An error occurred while updating the user details!!' });
+    }
+})
+
 module.exports = router;

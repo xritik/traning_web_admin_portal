@@ -6,7 +6,28 @@ const AllUsers = ({logout, navigate}) => {
 
   const [allUsers, setAllUsers] = useState([]);
   const [message, setMessage] = useState('');
+  const [editingUserId, setEditingUserId] = useState(null);
+  const [editingUserName, setEditingUserName] = useState('');
+  const [editingUserPassword, setEditingUserPassword] = useState('');
+  const [editingUserRole, setEditingUserRole] = useState('');
   const loggedinAdmin = localStorage.getItem('loggedinAdmin');
+
+  console.log('editingUserId', editingUserId)
+
+  const getUsers = async () => {
+    try{
+      const response = await fetch('http://localhost:5000/user')
+      const data = await response.json()
+
+      if(response.ok){
+        setAllUsers(data.users);
+      }else{
+        setMessage('Something went wrong');
+      }
+    }catch (err) {
+      console.log('Error fetching users', err);
+    }
+  }
   
   useEffect (() => {
     if(!loggedinAdmin){
@@ -14,23 +35,54 @@ const AllUsers = ({logout, navigate}) => {
         navigate('/login')
         console.log(loggedinAdmin);
     }else{
-      const getUsers = async () => {
-        try{
-          const response = await fetch('http://localhost:5000/user')
-          const data = await response.json()
-    
-          if(response.ok){
-            setAllUsers(data.users);
-          }else{
-            setMessage('Something went wrong');
-          }
-        }catch (err) {
-          console.log('Error fetching users', err);
-        }
-      }
       getUsers();
     }
-  }, [ navigate ]);
+  }, [ navigate, loggedinAdmin ]);
+
+  
+  const handleToEdit = (user) => {
+    setEditingUserId(user._id);
+    setEditingUserName(user.name);
+    setEditingUserPassword(user.password);
+    setEditingUserRole(user.role);
+  }
+  
+  const handleCancelEdit = () => {
+    setEditingUserId(null);
+    setEditingUserName('');
+    setEditingUserPassword('');
+    setEditingUserRole('');
+  }
+
+  const handleSave = async () => {
+    console.log(editingUserId)
+    try {
+      const response = await fetch('http://localhost:5000/user',{
+        method: 'PUT',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({editingUserId, editingUserName, editingUserPassword, editingUserRole})
+      });
+      const data = await response.json();
+      if(response.ok) {
+        alert(data.message);
+        handleCancelEdit();
+        getUsers();
+      }else if(response.status === 404){
+        alert(data.message)
+        handleCancelEdit();
+      }else if(response.status === 500){
+        alert(data.message)
+        handleCancelEdit();
+      } else{
+        alert('Something went wrong, Please try again!!')
+        handleCancelEdit();
+      }
+    } catch (error) {
+      console.error(error);
+      alert('Something went wrong, Please try again!!')
+      handleCancelEdit();
+    }
+  }
 
 
   return (
@@ -60,22 +112,73 @@ const AllUsers = ({logout, navigate}) => {
                 <th>Name</th>
                 <th>Password</th>
                 <th>Role</th>
-                {/* <th></th> */}
+                <th>To Edit</th>
               </tr>
             </thead>
             <tbody>
-              {
-                allUsers.map((user, i) => {
-                  return(
-                    <tr key={user._id}>
-                      <td>{i + 1}.</td>
+              {allUsers.map((user, i) => (
+                <tr key={user._id} onClick={() => handleToEdit(user)}>
+                  <td>{i + 1}</td>
+                  {editingUserId === user._id ? (
+                    <>
+                      {/* Render inputs for editable row */}
+                      <td style={{padding:'0px'}}>
+                        <input
+                          type="text"
+                          name="name"
+                          autoFocus
+                          value={editingUserName}
+                          onChange={(e) => setEditingUserName(e.target.value)}
+                          size={editingUserName.length || 5}
+                        />
+                      </td>
+                      <td style={{padding:'0px'}}>
+                        <input
+                          type="text"
+                          name="password"
+                          value={editingUserPassword}
+                          onChange={(e) => setEditingUserPassword(e.target.value)}
+                          size={editingUserPassword.length || 5}
+                        />
+                      </td>
+                      <td style={{padding:'0px'}}>
+                        {/* <input
+                          type="text"
+                          name="role"
+                          value={editingUserRole}
+                          onChange={(e) => setEditingUserRole(e.target.value)}
+                          size={editingUserRole.length || 5}
+                        /> */}
+                        <select
+                            className='selectRole'
+                            required
+                            name='labUsed'
+                            value={editingUserRole}
+                            onChange={(e) => setEditingUserRole(e.target.value)}
+                        >
+                            <option value="read">Read</option>
+                            <option value="write">Write</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                      </td>
+                      <td style={{ padding:'0px'}}>
+                        <button style={{backgroundColor:'green'}} className='saveButton' onClick={(e) => {e.stopPropagation(); handleSave(); }}>Save</button>
+                        <button style={{backgroundColor:'red'}} className='cancelButton'onClick={(e) => { e.stopPropagation(); handleCancelEdit(); }}>Cancel</button>
+                      </td>
+                    </>
+                  ) : (
+                    <>
                       <td>{user.name}</td>
-                      <td>{user.password}</td>
+                      {/* <td>{user.password}</td> */}
+                      <td>*******</td>
                       <td>{user.role}</td>
-                    </tr>
-                  )
-                })
-              }
+                      <td style={{padding:'0px'}}>
+                        <button className='editButton' onClick={() => handleToEdit(user)}>Edit</button>
+                      </td>
+                    </>
+                  )}
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

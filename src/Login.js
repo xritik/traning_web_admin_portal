@@ -74,7 +74,7 @@ const LoginPage = ({setLoggedinAdmin, navigate}) => {
             <span className="showPassword">Show Password <input type='checkbox' onChange={() => setShowPassword(!showPassword)} /></span>
           </div>
 
-          <div className="buttonDiv"><button type="submit">Login</button></div>
+          <div className="buttonDiv"><button className="loginButton" type="submit">Login</button></div>
         </form>
       </div>
     </div>
