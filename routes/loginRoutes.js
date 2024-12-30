@@ -10,7 +10,7 @@ router.post('/', async(req, res) => {
     if(admin){
         res.status(200).json({message: 'Login Successful!!..'})
     }else{
-        res.status(401).json({message: 'Invalid name or password!!..'})
+        res.status(401).json({message: 'Incorrect name or password!!..'})
     }
 })
 

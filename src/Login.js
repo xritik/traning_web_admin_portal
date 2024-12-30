@@ -1,4 +1,5 @@
 import { useState } from "react";
+const DelvexLogo = require('./img/delvexcommunity_logo-removebg-preview.png')
 
 const LoginPage = ({setLoggedinAdmin, navigate}) => {
 
@@ -36,42 +37,45 @@ const LoginPage = ({setLoggedinAdmin, navigate}) => {
 
   return (
     <div className="loginPage">
+      <div className="loginn">
+        <span>
+          <img src={DelvexLogo} alt="logo"/>
+        </span>
+        <span style={{padding:'0px 15px'}}>Welcome to <b style={{marginLeft:'3px', cursor:'pointer'}}>Delvex</b></span>
+      </div>
       <div className="loginSection">
-        <div>
-          <div className="loginHeading">Login</div>
-          {message && <p style={{textAlign:'center', color:'red'}}>{message}</p>}
-        </div>
+        <div className="loginHeading">Login</div>
+        {message && <p style={{textAlign:'center', color:'red', margin:'0px'}}>{message}</p>}
         <form onSubmit={(e) => {e.preventDefault(); handleLogin()}}>
-          <div>
-            <label style={{marginLeft:'5px'}} htmlFor="username">Name*</label>
-            <div style={{display:'flex', justifyContent:'center'}}>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={name}
-                onChange={e => setName(e.target.value)}
-                placeholder="Enter your name"
-                required
-                autoFocus
-              />
-            </div>
+          <div className="inputs">
+            <span>Name:-</span>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder="John"
+              required
+              autoFocus
+            />
           </div>
 
-          <div>
-            <label style={{marginLeft:'5px'}} htmlFor="password">Password*</label>
-            <div style={{display:'flex', justifyContent:'center'}}>
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="Enter your password"
-                required
-              />
-            </div>
-            <span className="showPassword">Show Password <input type='checkbox' onChange={() => setShowPassword(!showPassword)} /></span>
+          <div className="inputs">
+            <span>Password:-</span>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="*******"
+              required
+            />
+            <span className="togglePassword">
+              <i className={`bx ${showPassword ? "bxs-show" : "bxs-hide"}`} onClick={() => setShowPassword(!showPassword)}></i>
+            </span>
+            {/* <span className="showPassword">Show Password <input type='checkbox' onChange={() => setShowPassword(!showPassword)} /></span> */}
           </div>
 
           <div className="buttonDiv"><button className="loginButton" type="submit">Login</button></div>

@@ -61,56 +61,58 @@ const AddNewUser = ({logout, navigate}) => {
           <div className="addUserSection">
             <div>
               <div className="loginHeading">Add new user</div>
-              {message && <p style={{textAlign:'center', color:'red'}}>{message}</p>}
+              {message && <p style={{textAlign:'center', color:'red', margin:'0px'}}>{message}</p>}
             </div>
             <form onSubmit={(e) => {e.preventDefault(); handleAddUser() }}>
-              <div>
-                <label style={{marginLeft:'5px'}} htmlFor="username">Name*</label>
-                <div style={{display:'flex', justifyContent:'center'}}>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
-                    placeholder="Enter your name"
-                    required
-                    autoFocus
-                  />
-                </div>
+              <div className="inputs">
+                <span>Name:-</span>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  placeholder="John"
+                  required
+                  autoFocus
+                />
               </div>
 
-              <div>
-                <label style={{marginLeft:'5px'}} htmlFor="password">Password*</label>
-                <div style={{display:'flex', justifyContent:'center'}}>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    id="password"
-                    name="password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                    placeholder="Enter your password"
-                    required
-                  />
-                </div>
-                <span className="showPassword">Show Password <input type='checkbox' onChange={() => setShowPassword(!showPassword)} /></span>
+              <div className="inputs">
+                <span>Password:-</span>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  placeholder="*******"
+                  required
+                />
+                <span className="togglePassword">
+                  <i className={`bx ${showPassword ? "bxs-show" : "bxs-hide"}`} onClick={() => setShowPassword(!showPassword)}></i>
+                </span>
+                {/* <span className="showPassword">Show Password <input type='checkbox' onChange={() => setShowPassword(!showPassword)} /></span> */}
+              </div>
+              <div className="inputs">
+                <span>Verify:-</span>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  placeholder="Re-type password"
+                  required
+                />
+                <span className="togglePassword">
+                  <i className={`bx ${showPassword ? "bxs-show" : "bxs-hide"}`} onClick={() => setShowPassword(!showPassword)}></i>
+                </span>
+                {/* <span className="showPassword">Show Password <input type='checkbox' onChange={() => setShowPassword(!showPassword)} /></span> */}
               </div>
 
-              <div>
-                <label style={{marginLeft:'5px'}} htmlFor="password">Confirm Password*</label>
-                <div style={{display:'flex', justifyContent:'center'}}>
-                  <input
-                    type="password"
-                    id="confirm_password"
-                    name="confirm_password"
-                    value={confirmPassword}
-                    onChange={e => setConfirmPassword(e.target.value)}
-                    placeholder="Confirm password"
-                    required
-                  />
-                </div>
-              </div>
               <div className="addUserButton"><button type="submit">Add user</button></div>
+
             </form>
           </div>
         </div>

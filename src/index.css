@@ -22,13 +22,29 @@ body {
   align-items: center;
   padding-left: 7%;
 }
+.loginn{
+  position: absolute;
+  padding: 7px;
+  display: flex;
+}
+.loginn span{
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  background-color: #dbdbdb;
+  img{
+    width: 40px;
+  }
+}
 .loginSection{
-  height: 370px;
+  height: 280px;
   width: 350px;
   border: 1px solid black;
   border-radius: 15px;
   box-shadow: 10px 10px 15px .5px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 49, 104, 0.9);
   position: relative;
 }
 .loginHeading{
@@ -40,36 +56,51 @@ body {
 }
 form {
   width: 100%;
-  padding-top: 20px;
   display: flex;
-  /* align-items: center; */
   flex-direction: column;
-  gap: 25px;
-  input {
-    width: 90%;
-    margin-top: 3px;
-    padding: 10px 0px 10px 5px;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.9);
-    color: black;
+  align-items: center;
+  /* gap: 25px; */
+}
+.inputs{
+  width: 75%;
+  height: 35px;
+  padding: 0px 7px;
+  margin-top: 20px;
+  background-color: #ccc;
+  border-radius: 7px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span{
+    text-align: center;
+    padding: 5px;
+  }
+  input{
+    height: 100%;
+    width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 15px;
   }
 }
-.showPassword {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  white-space: nowrap;
-  padding: 3px 0px 0px 20px;
+.togglePassword{
+  i{
+    font-size: 20px;
+    color: gray;
+    cursor: pointer;
+  }
 }
 .buttonDiv{
-  padding-top: 20px;
+  padding-top: 40px;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 .loginButton {
   padding: 10px;
-  width: 50%;
+  width: 40%;
   border: none;
   border-radius: 5px;
   background-color: #28a745;
@@ -106,7 +137,7 @@ nav{
   /* border: 1px solid red; */
   border-radius: 35px;
   width: 80%;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(230, 230, 230, 0.95);
   box-shadow: 3px 4px 10px 1px rgb(150, 208, 232);
 }
 .nav1{
@@ -201,7 +232,6 @@ nav{
     box-shadow: -7px -7px 6px 1px white;
   }
 }
-
 .back{
   font-size: 25px;
 }
@@ -225,7 +255,7 @@ nav{
   justify-content: center;
 }
 .addUserSection{
-  height: 80%;
+  height: 60%;
   width: 60%;
   border: 1px solid black;
   border-radius: 15px;
@@ -234,6 +264,7 @@ nav{
   position: relative;
 }
 .addUserButton{
+  padding-top: 30px;
   display: flex;
   justify-content: center;
   button{
@@ -318,4 +349,104 @@ nav{
 }
 .editButton:active, .saveButton:active, .cancelButton:active{
   scale: .9;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 480px) {
+
+  .nav{
+    border-radius: 18px;
+    width: 96%;
+  }
+  .nav1{
+    width: 25%;
+    padding-left: 10px;
+    img{
+      width: 35px !important;
+    }
+  }
+  .brandName{
+    font-size: 16px;
+  }
+  .nav2{
+    font-size: 13px;
+    width: 50%;
+    gap: 15px;
+  }
+  .nav3{
+    width: 25%;
+    button{
+      padding: 5px 10px 5px 10px;
+      font-size: 10.5px;
+    }
+  }
+  .dashboard{
+    width: 100vw !important;
+    padding: 0px !important;
+  }
+  .part1{
+    font-size: 35px;
+  }
+  .part2{
+    font-size: 45px;
+  }
+
+
+  
+  .allUsersHeading{
+    font-size: 25px;
+  }
+  .dataTable{
+    justify-content: start;
+  }
+  .dataTable th, .dataTable td {
+    min-width: 75px;
+    text-align: center;
+    padding: 12px 30px 12px 30px;
+    border: 1px solid #ddd;
+  }
+  .dataTable td input{
+    height: 80% !important;
+    width: 50%;
+    padding: 12px 30px 12px 30px;
+    text-align: center;
+    background-color: transparent;
+  }
+  .editButton{
+    padding: 6px 20px 6px 20px;
+  }
+  .saveButton, .cancelButton{
+    padding: 7px 9px 7px 9px;
+    font-size: 11px;
+  }
+
+
+
+  .add_user_part1{
+    width: 100%;
+  }
+  .add_user_part2{
+    display: none;
+  }
+  .addUserPage{
+    height: 90vh;
+  }
+  .addUserSection{
+    height: 39%;
+    width: 85%;
+  }
+  .addUserButton{
+    button{
+      padding: 8px 25px 8px 25px;
+    }
+  }  
 }

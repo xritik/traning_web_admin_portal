@@ -12,8 +12,6 @@ const AllUsers = ({logout, navigate}) => {
   const [editingUserRole, setEditingUserRole] = useState('');
   const loggedinAdmin = localStorage.getItem('loggedinAdmin');
 
-  console.log('editingUserId', editingUserId)
-
   const getUsers = async () => {
     try{
       const response = await fetch('http://localhost:5000/user')
@@ -152,9 +150,10 @@ const AllUsers = ({logout, navigate}) => {
                         <select
                             className='selectRole'
                             required
-                            name='labUsed'
+                            name='selectRole'
                             value={editingUserRole}
-                            onChange={(e) => setEditingUserRole(e.target.value)}
+                            onChange={(e) =>setEditingUserRole(e.target.value)}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             <option value="read">Read</option>
                             <option value="write">Write</option>
