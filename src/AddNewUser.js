@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import girl_image  from './img/girl-laptop.png'
 import { Link } from 'react-router-dom';
+const DelvexLogo = require('./img/delvexcommunity_logo-removebg-preview.png')
 
 const AddNewUser = ({logout, navigate}) => {
 
@@ -52,11 +53,22 @@ const AddNewUser = ({logout, navigate}) => {
 
   return (
     <div className='add_new_user_section'>
+      <nav>
+        <div className='nav'>
+          <div className='nav1'>
+            <img src={DelvexLogo} alt='logo' style={{width:'65px'}}/>
+            <span className='brandName'>DELVEX</span>
+          </div>
+          <div className='nav2'>
+            <Link className='link' to={'/dashboard'} >Dashboard</Link>
+            <Link className='link' to={'/all_users'}>All users</Link>
+          </div>
+          <div className='nav3'>
+            <button onClick={logout}>Logout</button>
+          </div>
+        </div>
+      </nav>
       <div className='add_user_part1'>
-        <span className='back'>
-          <Link to={'/dashboard'}><i class='bx bx-arrow-back'></i></Link>
-        </span>
-
         <div className='addUserPage'>
           <div className="addUserSection">
             <div>

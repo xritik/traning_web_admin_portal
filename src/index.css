@@ -232,22 +232,6 @@ nav{
     box-shadow: -7px -7px 6px 1px white;
   }
 }
-.back{
-  font-size: 25px;
-}
-.bx-arrow-back{
-  transition: .3s;
-  cursor: pointer;
-  color: black;
-  padding: 5px;
-}
-.bx-arrow-back:hover{
-  color: white;
-  background-color: black;
-}
-.bx-arrow-back:active{
-  scale: .9;
-}
 .addUserPage{
   height: 90vh;
   display: flex;
@@ -331,15 +315,7 @@ nav{
 .dataTable td{
   cursor: pointer;
 }
-.editButton{
-  padding: 7px 30px 7px 30px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: rgb(255, 255, 91);
-  transition: .3s;
-}
-.saveButton, .cancelButton{
+.editButton, .deleteButton, .saveButton, .cancelButton{
   padding: 7px 10px 7px 10px;
   margin: 0px 5px;
   border-radius: 4px;
@@ -424,7 +400,7 @@ nav{
   .editButton{
     padding: 6px 20px 6px 20px;
   }
-  .saveButton, .cancelButton{
+  .editButton, .deleteButton, .saveButton, .cancelButton{
     padding: 7px 9px 7px 9px;
     font-size: 11px;
   }

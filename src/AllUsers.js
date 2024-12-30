@@ -53,7 +53,6 @@ const AllUsers = ({logout, navigate}) => {
   }
 
   const handleSave = async () => {
-    console.log(editingUserId)
     try {
       const response = await fetch('http://localhost:5000/user',{
         method: 'PUT',
@@ -80,6 +79,39 @@ const AllUsers = ({logout, navigate}) => {
       alert('Something went wrong, Please try again!!')
       handleCancelEdit();
     }
+  }
+
+  const handleDelete = async (user) => {
+    const confirmation = window.confirm(`Are you sure to delete user '${user.name}'`)
+
+    if(confirmation){
+      try {
+        const response = await fetch(`http://localhost:5000/user/${user._id}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+        });      
+        const data = await response.json();
+        if(response.ok) {
+          alert(data.message);
+          handleCancelEdit();
+          getUsers();
+        }else if(response.status === 404){
+          alert(data.message)
+          handleCancelEdit();
+        }else if(response.status === 500){
+          alert(data.message)
+          handleCancelEdit();
+        } else{
+          alert('Something went wrong, Please try again!!')
+          handleCancelEdit();
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Something went wrong, Please try again!!')
+        handleCancelEdit();
+      }
+    }
+    
   }
 
 
@@ -162,7 +194,7 @@ const AllUsers = ({logout, navigate}) => {
                       </td>
                       <td style={{ padding:'0px'}}>
                         <button style={{backgroundColor:'green'}} className='saveButton' onClick={(e) => {e.stopPropagation(); handleSave(); }}>Save</button>
-                        <button style={{backgroundColor:'red'}} className='cancelButton'onClick={(e) => { e.stopPropagation(); handleCancelEdit(); }}>Cancel</button>
+                        <button style={{backgroundColor:'rgb(239, 80, 80)'}} className='cancelButton'onClick={(e) => { e.stopPropagation(); handleCancelEdit(); }}>Cancel</button>
                       </td>
                     </>
                   ) : (
@@ -172,7 +204,8 @@ const AllUsers = ({logout, navigate}) => {
                       <td>*******</td>
                       <td>{user.role}</td>
                       <td style={{padding:'0px'}}>
-                        <button className='editButton' onClick={() => handleToEdit(user)}>Edit</button>
+                        <button style={{backgroundColor:'rgb(255, 255, 91)'}} className='editButton' onClick={() => handleToEdit(user)}>Edit</button>
+                        <button style={{backgroundColor:'rgb(239, 80, 80)'}} className='editButton' onClick={(e) => { e.stopPropagation(); handleDelete(user)}}>Delete</button>
                       </td>
                     </>
                   )}
