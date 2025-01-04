@@ -14,7 +14,7 @@ const AllUsers = ({logout, navigate}) => {
 
   const getUsers = async () => {
     try{
-      const response = await fetch('http://localhost:5000/user')
+      const response = await fetch('http://localhost:8080/user')
       const data = await response.json()
 
       if(response.ok){
@@ -54,7 +54,7 @@ const AllUsers = ({logout, navigate}) => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('http://localhost:5000/user',{
+      const response = await fetch('http://localhost:8080/user',{
         method: 'PUT',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({editingUserId, editingUserName, editingUserPassword, editingUserRole})
@@ -86,7 +86,7 @@ const AllUsers = ({logout, navigate}) => {
 
     if(confirmation){
       try {
-        const response = await fetch(`http://localhost:5000/user/${user._id}`, {
+        const response = await fetch(`http://localhost:8080/user/${user._id}`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
         });      

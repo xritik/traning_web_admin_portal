@@ -24,7 +24,7 @@ const AddNewUser = ({logout, navigate}) => {
   const handleAddUser = async () => {
     if(password === confirmPassword){
       try {
-        const response = await fetch('http://localhost:5000/user',{
+        const response = await fetch('http://localhost:8080/user',{
           method: 'POST',
           headers: {
             'Content-Type':'application/json'
