@@ -80,6 +80,7 @@ router.delete('/:id', async(req, res) => {
     } catch (error) {
         console.error("Error deleting user details:", error);
         res.status(500).json({ message: 'An error occurred while deleting the user details!!' });
+        
     }
 })
 
