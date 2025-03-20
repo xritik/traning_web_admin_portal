@@ -3,7 +3,7 @@ import girl_image  from './img/girl-laptop.png'
 import { Link } from 'react-router-dom';
 const DelvexLogo = require('./img/delvexcommunity_logo-removebg-preview.png')
 
-const AddNewUser = ({logout, navigate}) => {
+const AddNewUser = ({HOST, logout, navigate}) => {
 
   const loggedinAdmin = localStorage.getItem('loggedinAdmin');
   const [name, setName] = useState('');
@@ -24,7 +24,7 @@ const AddNewUser = ({logout, navigate}) => {
   const handleAddUser = async () => {
     if(password === confirmPassword){
       try {
-        const response = await fetch('http://localhost:8080/user',{
+        const response = await fetch(`http://${HOST}:8080/user`,{
           method: 'POST',
           headers: {
             'Content-Type':'application/json'

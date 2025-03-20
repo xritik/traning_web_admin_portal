@@ -1,7 +1,7 @@
 import { useState } from "react";
 const DelvexLogo = require('./img/delvexcommunity_logo-removebg-preview.png')
 
-const LoginPage = ({setLoggedinAdmin, navigate}) => {
+const LoginPage = ({HOST, setLoggedinAdmin, navigate}) => {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -10,7 +10,7 @@ const LoginPage = ({setLoggedinAdmin, navigate}) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:8080/login',{
+      const response = await fetch(`http://${HOST}:8080/login`,{
         method: 'POST',
         headers: {
           'Content-Type':'application/json'

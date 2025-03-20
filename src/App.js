@@ -9,6 +9,7 @@ function App() {
   const navigate = useNavigate();
   const [loggedinAdmin, setLoggedinAdmin] = useState(localStorage.getItem('loggedinAdmin') || '');
   const [message, setMessage] = useState('');
+  const HOST = 'portal.vikasweb.xyz';
   console.log('loggedinAdmin:- ',loggedinAdmin);
 
   useEffect(() => {
@@ -28,11 +29,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login setLoggedinAdmin={setLoggedinAdmin} navigate={navigate} message={message} setMessage={setMessage} />} />
-        <Route path="/login" element={<Login setLoggedinAdmin={setLoggedinAdmin} navigate={navigate} message={message} setMessage={setMessage} />} />
-        <Route path="/dashboard" element={<Dashboard logout={logout} navigate={navigate} message={message} setMessage={setMessage} />} />
-        <Route path="/add_new_user" element={<AddNewUser logout={logout} navigate={navigate} />} />
-        <Route path="/all_users" element={<AllUsers logout={logout} navigate={navigate} />} />
+        <Route path="/" element={<Login HOST={HOST} setLoggedinAdmin={setLoggedinAdmin} navigate={navigate} message={message} setMessage={setMessage} />} />
+        <Route path="/login" element={<Login HOST={HOST} setLoggedinAdmin={setLoggedinAdmin} navigate={navigate} message={message} setMessage={setMessage} />} />
+        <Route path="/dashboard" element={<Dashboard HOST={HOST} logout={logout} navigate={navigate} message={message} setMessage={setMessage} />} />
+        <Route path="/add_new_user" element={<AddNewUser HOST={HOST} logout={logout} navigate={navigate} />} />
+        <Route path="/all_users" element={<AllUsers HOST={HOST} logout={logout} navigate={navigate} />} />
       </Routes>
     </div>
   );
