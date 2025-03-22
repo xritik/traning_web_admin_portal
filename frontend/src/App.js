@@ -10,6 +10,7 @@ function App() {
   const [loggedinAdmin, setLoggedinAdmin] = useState(localStorage.getItem('loggedinAdmin') || '');
   const [message, setMessage] = useState('');
   const HOST = 'portal.vikasweb.xyz';
+  // const HOST = 'localhost';
   console.log('loggedinAdmin:- ',loggedinAdmin);
 
   useEffect(() => {
