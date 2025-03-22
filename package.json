@@ -13,12 +13,9 @@
     "react-scripts": "5.0.1"
   },
   "scripts": {
-    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
-    "backend": "nodemon server.js",
-    "frontend": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "backend": "npm start --prefix backend",
+    "frontend": "npm start --prefix frontend",
+    "start": "concurrently \"npm run backend\" \"npm run frontend\""
   },
   "eslintConfig": {
     "extends": [
