@@ -9,8 +9,7 @@ function App() {
   const navigate = useNavigate();
   const [loggedinAdmin, setLoggedinAdmin] = useState(localStorage.getItem('loggedinAdmin') || '');
   const [message, setMessage] = useState('');
-  const HOST = 'portal.vikasweb.xyz';
-  // const HOST = 'localhost';
+  const HOST = `${window.location.hostname}`;
   console.log('loggedinAdmin:- ',loggedinAdmin);
 
   useEffect(() => {
