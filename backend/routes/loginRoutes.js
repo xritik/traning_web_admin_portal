@@ -8,7 +8,7 @@ router.post('/', async(req, res) => {
 
     const admin = await Admin.findOne({name, password});
 
-    if (admin.length==0){
+    if (!admin){
         if(name=='admin' && password=='pass'){
             res.status(200).json({ message: 'Login Successful!!' });
         }else{
@@ -21,6 +21,6 @@ router.post('/', async(req, res) => {
             res.status(401).json({ message: 'Invalid name or password!!' });
         }
     }
-})
+});
 
 module.exports = router;
