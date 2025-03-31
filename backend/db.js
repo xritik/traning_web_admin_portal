@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 require('dotenv').config();
 
-const mongodbUserName = process.env.MONGO_USER
-const mongodbPass = process.env.MONGO_PASS
+// const mongodbUserName = process.env.MONGO_USER
+// const mongodbPass = process.env.MONGO_PASS
 
 const mongoURL = 'mongodb://localhost:27017/mytraining';
 // const mongoURL = `mongodb://${mongodbUserName}:${mongodbPass}@localhost:27017/mytraining`;
