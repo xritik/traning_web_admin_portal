@@ -4,6 +4,7 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import AddNewUser from './AddNewUser';
 import AllUsers from './AllUsers';
+import MissingPage from './MissingPage';
 
 function App() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard HOST={HOST} logout={logout} navigate={navigate} message={message} setMessage={setMessage} />} />
         <Route path="/add_new_user" element={<AddNewUser HOST={HOST} logout={logout} navigate={navigate} />} />
         <Route path="/all_users" element={<AllUsers HOST={HOST} logout={logout} navigate={navigate} />} />
+        <Route path="/*" element={<MissingPage/>} />
       </Routes>
     </div>
   );

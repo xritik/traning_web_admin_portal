@@ -326,6 +326,19 @@ nav{
 .editButton:active, .saveButton:active, .cancelButton:active{
   scale: .9;
 }
+.missingPage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  img{
+    width: 555px;
+  }
+  h1{
+    font-size: 90px;
+    margin-top: -50px;
+  }
+}
 
 
 
@@ -425,4 +438,15 @@ nav{
       padding: 8px 25px 8px 25px;
     }
   }  
+
+  .missingPage{
+    img{
+      width: 222px;
+      margin-top: 20vh;
+    }
+    h1{
+      font-size: 44px;
+      margin-top: 50px;
+    }
+  }
 }
